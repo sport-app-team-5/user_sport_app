@@ -18,7 +18,7 @@ user_router = APIRouter(
 
 
 @user_router.post("", response_model=UserResponseDTO, status_code=status.HTTP_201_CREATED,
-                  dependencies=[Security(authorized, scopes=[PermissionEnum.CREATE_USER.code])])
+                  dependencies=[Security(authorized)])
 async def create_user(user: UserRequestDTO, db: Session = Depends(get_db)):
     user_service = UserService()
     user_created = user_service.create_user(user, db)
