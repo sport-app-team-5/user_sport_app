@@ -5,7 +5,9 @@ from app.modules.user.domain.enums.document_type_enum import DocumentTypeEnum
 
 @dataclass(frozen=True)
 class UserRequestDTO(BaseModel):
+    country_id: int
     role_id: int
+    city: str
     password: str
     email: EmailStr
     name: str
@@ -15,7 +17,9 @@ class UserRequestDTO(BaseModel):
 
     model_config = ConfigDict(json_schema_extra={
         "example": {
+            "country_id": 1,
             "role_id": 1,
+            "city": "Bello",
             "password": "luis",
             "email": "luis@gmail.com",
             "name": 'luis',
@@ -29,6 +33,7 @@ class UserRequestDTO(BaseModel):
 @dataclass(frozen=True)
 class UserResponseDTO(BaseModel):
     id: int
+    country_id: int
     role_id: int
     email: str
     name: str

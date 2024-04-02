@@ -1,18 +1,22 @@
 import pytest
 from httpx import Response
 from app.modules.auth.domain.entities import Role
+from app.modules.user.domain.entities import Country
 
 
 @pytest.fixture
 def user_seeders(db) -> None:
     db.add(Role(code="DEPO", name="Deportista"))
+    db.add(Country(name="Colombia", code="CO"))
     db.commit()
 
 
 @pytest.fixture
 def user_data() -> dict:
     return {
+        "country_id": 1,
         "role_id": 1,
+        "city": "Bello",
         "password": "secret",
         "email": "deportista@sport.app",
         "name": 'deportista',
