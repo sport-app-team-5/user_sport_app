@@ -1,3 +1,4 @@
+import uuid
 from typing import Any
 from typing import Generator
 import pytest
@@ -7,6 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from fastapi import FastAPI
 from app.config.db import Base, get_db
 from app.main import app
+from app.modules.auth.domain.service import AuthService
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test_db.db"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
@@ -39,8 +41,17 @@ def client(__app: FastAPI, db: SessionTesting) -> Generator[TestClient, Any, Non
         finally:
             pass
 
+    def __authorized():
+        pass
+
     # noinspection PyUnresolvedReferences
-    app.dependency_overrides.update({get_db: __get_test_db})
+    app.dependency_overrides.update({get_db: __get_test_db, AuthService.authorized: __authorized})
 
     with TestClient(__app) as client:
         yield client
+
+
+@pytest.fixture
+def headers() -> dict:
+    uuid_token = uuid.uuid4()
+    return {"Authorization": f"Bearer {uuid_token}"}
