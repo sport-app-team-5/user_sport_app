@@ -15,5 +15,5 @@ class AuthService(Service):
         return self._repository_factory
 
     def authenticate_user(self, form_data: OAuth2PasswordRequestForm, db: Session) -> TokenResponse:
-        repository = self.repository_factory.create_object(AuthRepository.__class__)
+        repository = self.repository_factory.create_object(AuthRepository)
         return repository.authenticate(form_data, db)

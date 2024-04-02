@@ -2,7 +2,7 @@ from typing import List
 from fastapi import HTTPException, status
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
-from app.modules.user.aplication.dto import UserResponseDTO
+from app.modules.user.aplication.dto import UserResponseDTO, UserRequestDTO
 from app.modules.user.domain.entities import User
 from app.modules.user.domain.repository import UserRepository
 from app.seedwork.presentation.utils import encode_password
@@ -31,7 +31,7 @@ class UserRepositoryPostgres(UserRepository):
         except SQLAlchemyError as e:
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
-    def create(self, entity: User, db: Session) -> UserResponseDTO:
+    def create(self, entity: UserRequestDTO, db: Session) -> UserResponseDTO:
         try:
             user = User(**entity.model_dump())
             user.password = encode_password(entity.password)
@@ -41,9 +41,3 @@ class UserRepositoryPostgres(UserRepository):
         except SQLAlchemyError as e:
             db.rollback()
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
-
-    def update(self, entity_id: int, entity: User, db: Session) -> UserResponseDTO:
-        raise NotImplementedError
-
-    def delete(self, entity_id: int, db: Session) -> UserResponseDTO:
-        raise NotImplementedError
