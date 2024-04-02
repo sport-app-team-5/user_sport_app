@@ -460,8 +460,7 @@ $RECYCLE.BIN/
 # alembic
 alembic.ini
 test_db.db
-.env.production
-.env.stage
+test.db
 alembic.ini.production
 alembic.ini.stage
 test_db.db-journal
