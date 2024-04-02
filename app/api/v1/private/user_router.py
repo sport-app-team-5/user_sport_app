@@ -2,10 +2,10 @@ from typing import List
 from fastapi import APIRouter, Depends, Path, Security, status
 from sqlalchemy.orm import Session
 from app.config.db import get_db
-from app.moduls.auth.domain.enums.permission_enum import PermissionEnum
-from app.moduls.auth.domain.service import AuthService
-from app.moduls.user.aplication.dto import UserResponseDTO, UserRequestDTO
-from app.moduls.user.aplication.service import UserService
+from app.modules.auth.domain.enums.permission_enum import PermissionEnum
+from app.modules.auth.domain.service import AuthService
+from app.modules.user.aplication.dto import UserResponseDTO, UserRequestDTO
+from app.modules.user.aplication.service import UserService
 from app.seedwork.presentation.jwt import oauth2_scheme
 
 auth_service = AuthService()

@@ -2,9 +2,9 @@ from typing import List
 from fastapi import HTTPException, status
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
-from app.moduls.user.aplication.dto import UserResponseDTO
-from app.moduls.user.domain.entities import User
-from app.moduls.user.domain.repository import UserRepository
+from app.modules.user.aplication.dto import UserResponseDTO
+from app.modules.user.domain.entities import User
+from app.modules.user.domain.repository import UserRepository
 from app.seedwork.presentation.utils import encode_password
 
 

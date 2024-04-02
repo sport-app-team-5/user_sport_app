@@ -1,8 +1,8 @@
 from typing import List
 from sqlalchemy.orm import Session
-from app.moduls.user.aplication.dto import UserRequestDTO, UserResponseDTO
-from app.moduls.user.domain.repository import UserRepository
-from app.moduls.user.infrastructure.factories import RepositoryFactory
+from app.modules.user.aplication.dto import UserRequestDTO, UserResponseDTO
+from app.modules.user.domain.repository import UserRepository
+from app.modules.user.infrastructure.factories import RepositoryFactory
 from app.seedwork.aplication.services import Service
 
 

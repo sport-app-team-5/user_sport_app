@@ -2,7 +2,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime
 from sqlalchemy import String, DateTime, Boolean, ForeignKey
 from app.config.db import Base
-from app.moduls.auth.domain.entities import Role
+from app.modules.auth.domain.entities import Role
 
 
 class User(Base):

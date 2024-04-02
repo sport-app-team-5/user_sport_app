@@ -1,8 +1,8 @@
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from app.moduls.auth.aplication.dto import TokenResponse
-from app.moduls.auth.domain.repository import AuthRepository
-from app.moduls.auth.infrastructure.factories import RepositoryFactory
+from app.modules.auth.aplication.dto import TokenResponse
+from app.modules.auth.domain.repository import AuthRepository
+from app.modules.auth.infrastructure.factories import RepositoryFactory
 from app.seedwork.aplication.services import Service
 
 

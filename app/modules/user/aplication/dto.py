@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pydantic import ConfigDict, EmailStr, BaseModel
-from app.moduls.user.domain.enums.document_type_enum import DocumentTypeEnum
+from app.modules.user.domain.enums.document_type_enum import DocumentTypeEnum
 
 
 @dataclass(frozen=True)
