@@ -104,7 +104,7 @@ class TestGetUsersRouter:
 
 
 def create_user(client, data, headers) -> Response:
-    user_created = client.post("/api/v1/auth/users", headers=headers, json=data)
+    user_created = client.post("/api/v1/users", headers=headers, json=data)
     return user_created
 
 
