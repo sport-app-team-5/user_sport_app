@@ -1,10 +1,10 @@
 from typing import List
-from fastapi import APIRouter, Depends, Path, Security, status
+from fastapi import APIRouter, Depends, Path, Security
 from sqlalchemy.orm import Session
 from app.config.db import get_db
 from app.modules.auth.domain.enums.permission_enum import PermissionEnum
 from app.modules.auth.domain.service import AuthService
-from app.modules.user.aplication.dto import UserResponseDTO, UserRequestDTO
+from app.modules.user.aplication.dto import UserResponseDTO
 from app.modules.user.aplication.service import UserService
 from app.seedwork.presentation.jwt import oauth2_scheme
 
@@ -12,17 +12,9 @@ auth_service = AuthService()
 authorized = auth_service.authorized
 user_router = APIRouter(
     prefix='/users',
-    tags=["user"],
+    tags=["Users"],
     dependencies=[Depends(oauth2_scheme)]
 )
-
-
-@user_router.post("", response_model=UserResponseDTO, status_code=status.HTTP_201_CREATED,
-                  dependencies=[Security(authorized)])
-async def create_user(user: UserRequestDTO, db: Session = Depends(get_db)):
-    user_service = UserService()
-    user_created = user_service.create_user(user, db)
-    return user_created
 
 
 @user_router.get("", response_model=List[UserResponseDTO],

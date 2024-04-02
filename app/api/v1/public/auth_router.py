@@ -6,7 +6,7 @@ from app.config.db import get_db
 from app.modules.auth.aplication.dto import TokenResponse
 from app.modules.auth.aplication.service import AuthService
 
-auth_router = APIRouter(tags=["auth"])
+auth_router = APIRouter(tags=["Login"])
 
 
 @auth_router.post("/login", response_model=TokenResponse)
