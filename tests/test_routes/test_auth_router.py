@@ -1,7 +1,8 @@
 import pytest
 from httpx import Response
 from app.modules.auth.domain.entities import Role
-from app.modules.user.domain.entities import User, Country
+from app.modules.user.domain.entities import User
+from app.seedwork.domain.entities import Country, City
 from app.seedwork.presentation.utils import encode_password
 
 
@@ -9,7 +10,8 @@ from app.seedwork.presentation.utils import encode_password
 def auth_seeders(db) -> None:
     db.add(Role(code="DEPO", name="Deportista"))
     db.add(Country(name="Colombia", code="CO"))
-    db.add(User(country_id=1, role_id=1, city="Bello", email="deportista@sport.app", password=encode_password("secret"),
+    db.add(City(name="Medellin", code="MDE", country_id=1))
+    db.add(User(city_id=1, role_id=1, email="deportista@sport.app", password=encode_password("secret"),
                 name='deportista', lastname="no profesional", document_type="CC", document_number="123456789"))
     db.commit()
 
