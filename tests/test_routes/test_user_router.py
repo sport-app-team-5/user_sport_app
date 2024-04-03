@@ -61,6 +61,15 @@ class TestCreateUserRouter:
         assert "detail" in response_json
         assert "body" in response_json["detail"][0]["loc"]
 
+    def test_create_user_with_duplicated_data(self, client, headers, user_seeders, user_data):
+        create_user(client, user_data, headers)
+        user_created = create_user(client, user_data, headers)
+        user_created_json = user_created.json()
+
+        assert user_created.status_code == 409
+        assert "detail" in user_created_json
+        assert "The email already exists" in user_created_json["detail"]
+
 
 class TestGetUserRouter:
     def test_get_user(self, client, headers, user_seeders, user_data):

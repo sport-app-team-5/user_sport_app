@@ -1,5 +1,6 @@
 from typing import List
 from fastapi import HTTPException, status
+from sqlalchemy import or_
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 from app.modules.user.aplication.dto import UserResponseDTO, UserRequestDTO
@@ -17,6 +18,16 @@ class UserRepositoryPostgres(UserRepository):
 
         return user
 
+    @staticmethod
+    def validates_duplicate_fields(user: UserRequestDTO, db: Session) -> None:
+        existing_user = db.query(User).filter(
+            or_(User.email == user.email, User.document_number == user.document_number)).first()
+        if existing_user:
+            if existing_user.email == user.email:
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail='The email already exists')
+            elif existing_user.document_number == user.document_number:
+                raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail='The document number already exists')
+
     def get_by_id(self, entity_id: int, db: Session) -> UserResponseDTO:
         try:
             user = self.__validate_exist_user(entity_id, db)
@@ -33,6 +44,7 @@ class UserRepositoryPostgres(UserRepository):
 
     def create(self, entity: UserRequestDTO, db: Session) -> UserResponseDTO:
         try:
+            self.validates_duplicate_fields(entity, db)
             user = User(**entity.model_dump())
             user.password = encode_password(entity.password)
             db.add(user)
