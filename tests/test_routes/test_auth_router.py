@@ -30,8 +30,9 @@ class TestAuthRouter:
         assert "access_token" in _login.json()
         assert "token_type" in _login.json()
 
-    def test_login_failed(self, client):
-        _login = login(client, {"username": "john", "password": "secret"})
+    def test_login_failed(self, client, user_data):
+        user_data["password"] = "fail"
+        _login = login(client, user_data)
 
         assert _login.status_code == 400
         assert "access_token" not in _login.json()
