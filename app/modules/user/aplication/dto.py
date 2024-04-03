@@ -20,12 +20,12 @@ class UserRequestDTO(BaseModel):
             "country_id": 1,
             "role_id": 1,
             "city": "Bello",
-            "password": "luis",
-            "email": "luis@gmail.com",
-            "name": 'luis',
-            "lastname": "perez",
+            "password": "secret",
+            "email": "deportista@sport.app",
+            "name": 'deportista',
+            "lastname": "no profesional",
             "document_type": "CC",
-            "document_number": "12234556677"
+            "document_number": "123456789"
         }
     })
 
