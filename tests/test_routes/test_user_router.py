@@ -114,5 +114,5 @@ def get_user(client, user_id, headers) -> Response:
 
 
 def get_users(client, headers) -> Response:
-    users = client.get(f"/api/v1/auth/users", headers=headers)
+    users = client.get("/api/v1/auth/users", headers=headers)
     return users

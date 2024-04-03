@@ -36,10 +36,7 @@ def db() -> Generator[SessionTesting, Any, None]:
 @pytest.fixture(scope="function")
 def client(__app: FastAPI, db: SessionTesting) -> Generator[TestClient, Any, None]:
     def __get_test_db():
-        try:
-            yield db
-        finally:
-            pass
+        yield db
 
     def __authorized():
         pass
