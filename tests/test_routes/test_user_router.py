@@ -35,7 +35,7 @@ class TestCreateUserRouter:
         assert "id" in user_created_json
         assert user_data['name'] == user_created_json["name"]
         assert user_data['email'] == user_created_json["email"]
-        assert user_data['role_id'] == user_created_json["role_id"]
+        assert user_data['lastname'] == user_created_json["lastname"]
 
     def test_create_user_with_invalid_data(self, client, headers, user_seeders, user_data):
         user_data_fail = user_data["role_id"] = "fail"
@@ -60,6 +60,15 @@ class TestCreateUserRouter:
         assert response.status_code == 422
         assert "detail" in response_json
         assert "body" in response_json["detail"][0]["loc"]
+
+    def test_create_user_with_duplicated_data(self, client, headers, user_seeders, user_data):
+        create_user(client, user_data, headers)
+        user_created = create_user(client, user_data, headers)
+        user_created_json = user_created.json()
+
+        assert user_created.status_code == 409
+        assert "detail" in user_created_json
+        assert "The email already exists" in user_created_json["detail"]
 
 
 class TestGetUserRouter:

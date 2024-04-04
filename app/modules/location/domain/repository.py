@@ -8,3 +8,4 @@ class CountryRepository(Repository, ABC):
 
 class CityRepository(Repository, ABC):
     ...
+

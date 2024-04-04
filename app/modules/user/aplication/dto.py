@@ -17,7 +17,7 @@ class UserRequestDTO(BaseModel):
     model_config = ConfigDict(json_schema_extra={
         "example": {
             "city_id": 1,
-            "role_id": 1,
+            "role_id": 3,
             "password": "secret",
             "email": "deportista@sport.app",
             "name": 'deportista',
@@ -34,5 +34,6 @@ class UserResponseDTO(BaseModel):
     city_id: int
     role_id: int
     email: str
+    lastname: str
     name: str
     model_config = ConfigDict(from_attributes=True)
