@@ -11,7 +11,7 @@ def auth_seeders(db) -> None:
     db.add(Role(code="DEPO", name="Deportista"))
     db.add(Country(name="Colombia", code="CO"))
     db.add(City(name="Medellin", code="MDE", country_id=1))
-    db.add(User(city_id=1, role_id=1, email="deportista@sport.app", password=encode_password("secret"),
+    db.add(User(residence_city_id=1, birth_city_id=1, role_id=1, email="deportista@sport.app", password=encode_password("secret"),
                 name='deportista', lastname="no profesional", document_type="CC", document_number="123456789"))
     db.commit()
 

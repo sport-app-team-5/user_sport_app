@@ -11,7 +11,8 @@ class User(Base):
     __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
+    residence_city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
+    birth_city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"), index=True)
     document_type: Mapped[str] = mapped_column(String(3))
     document_number: Mapped[str] = mapped_column(String(20), unique=True)
@@ -23,7 +24,8 @@ class User(Base):
     created_at: Mapped[str] = mapped_column(DateTime, default=datetime.utcnow)
     updated_at: Mapped[str] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    country: Mapped["City"] = relationship()
+    residence_city: Mapped["City"] = relationship("City", foreign_keys=[residence_city_id])
+    birth_city: Mapped["City"] = relationship("City", foreign_keys=[birth_city_id])
     role: Mapped["Role"] = relationship()
 
     def __str__(self):

@@ -15,7 +15,8 @@ def user_seeders(db) -> None:
 @pytest.fixture
 def user_data() -> dict:
     return {
-        "city_id": 1,
+        "residence_city_id": 1,
+        "birth_city_id": 1,
         "role_id": 1,
         "password": "secret",
         "email": "deportista@sport.app",
