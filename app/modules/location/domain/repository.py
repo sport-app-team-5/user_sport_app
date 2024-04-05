@@ -4,7 +4,6 @@ from typing import List
 from pytest import Session
 
 from app.modules.location.aplication.dto import CityResponseDTO, CountryResponseDTO
-from app.seedwork.domain.entities import Entity
 from app.seedwork.domain.repositories import Repository
 
 

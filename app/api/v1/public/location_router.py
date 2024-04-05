@@ -1,8 +1,7 @@
 from typing import List
-from fastapi import APIRouter, Depends, Path, Security
+from fastapi import APIRouter, Depends, Path
 from sqlalchemy.orm import Session
 from app.config.db import get_db
-from app.modules.auth.domain.enums.permission_enum import PermissionEnum
 from app.modules.auth.domain.service import AuthService
 from app.modules.location.aplication.service import LocationService
 from app.modules.location.aplication.dto import CityResponseDTO, CountryResponseDTO
