@@ -8,7 +8,7 @@ class Env:
 
     try:
         SECRET_KEY: str = secrets["SECRET_KEY"]
-        ENV: str = secrets["ENV"]
+        ENVIRONMENT: str = secrets["ENVIRONMENT"]
 
         DB_USER: str = secrets["DB_USER"]
         DB_PASSWORD: str = secrets["DB_PASSWORD"]
