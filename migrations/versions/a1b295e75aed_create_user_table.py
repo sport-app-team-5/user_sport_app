@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = '46f44135f3ea'
-down_revision: Union[str, None] = 'a1b295e75aed'
+down_revision: Union[str, None] = 'fdaf6d3708a2'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -22,6 +22,8 @@ def upgrade() -> None:
     op.create_table(
         'users', sa.Column('id', sa.Integer, primary_key=True, index=True),
         sa.Column('role_id', sa.Integer(), sa.ForeignKey('roles.id'), index=True),
+        sa.Column('residence_city_id', sa.Integer(), sa.ForeignKey('cities.id'), index=True),
+        sa.Column('birth_city_id', sa.Integer(), sa.ForeignKey('cities.id'), index=True),
         sa.Column('document_type', sa.String(20), nullable=False),
         sa.Column('document_number', sa.String(20), unique=True, nullable=False),
         sa.Column('email', sa.String(256), unique=True, nullable=False),
