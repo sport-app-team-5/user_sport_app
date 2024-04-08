@@ -8,8 +8,6 @@ COPY config-cloud.py config.py
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-RUN alembic upgrade head
-
 EXPOSE 80
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]

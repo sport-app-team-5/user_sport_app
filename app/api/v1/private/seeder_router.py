@@ -7,7 +7,8 @@ from config import settings
 
 seeder_router = APIRouter(
     prefix='/seeders',
-    tags=["Seeders"]
+    tags=["Seeders"],
+    dependencies=[Depends(oauth2_scheme)]
 )
 
 
