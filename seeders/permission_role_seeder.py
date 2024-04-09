@@ -22,7 +22,8 @@ def permission_roles_seed(db: Session) -> None:
             PermissionEnum.CREATE_EVENT,
             PermissionEnum.READ_EVENT,
             PermissionEnum.UPDATE_EVENT,
-            PermissionEnum.DEACTIVATE_EVENT
+            PermissionEnum.DEACTIVATE_EVENT,
+            PermissionEnum.MANAGE_SESSION
         ],
         RoleEnum.TERCERO.value: [
             PermissionEnum.READ_USER,
@@ -46,7 +47,8 @@ def permission_roles_seed(db: Session) -> None:
             PermissionEnum.CREATE_SERVICE,
             PermissionEnum.READ_SERVICE,
             PermissionEnum.READ_PRODUCT,
-            PermissionEnum.READ_EVENT
+            PermissionEnum.READ_EVENT,
+            PermissionEnum.MANAGE_SESSION
         ]
     }
     assign_permission_to_roles(db, roles_and_permissions)
