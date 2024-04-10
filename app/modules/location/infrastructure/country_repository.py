@@ -7,7 +7,6 @@ from app.modules.location.domain.repository import CountryRepository
 from app.seedwork.domain.entities import Country
 
 
-
 class CountryRepositoryPostgres(CountryRepository):
 
     def get_all(self, db: Session) -> List[CountryResponseDTO]:

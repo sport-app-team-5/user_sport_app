@@ -21,9 +21,11 @@ class LocationService(Service):
     def get_cities(self, db: Session) -> List[CityResponseDTO]:
         repository = self.repository_factory.create_object(CityRepository)
         cities = repository.get_all(db)
-        return [CityResponseDTO(id=city.id, name=city.name, code=city.code, country_id=city.country_id) for city in cities]
+        return [CityResponseDTO(id=city.id, name=city.name, code=city.code, country_id=city.country_id)
+                for city in cities]
 
     def get_cities_by_country_id(self, db: Session, country_id: int = None) -> List[CityResponseDTO]:
         repository = self.repository_factory.create_object(CityRepository)
         cities = repository.get_by_id(country_id, db)
-        return [CityResponseDTO(id=city.id, name=city.name, code=city.code, country_id=city.country_id) for city in cities]
+        return [CityResponseDTO(id=city.id, name=city.name, code=city.code, country_id=city.country_id)
+                for city in cities]
