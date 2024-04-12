@@ -23,6 +23,7 @@ def permission_roles_seed(db: Session) -> None:
             PermissionEnum.READ_EVENT,
             PermissionEnum.UPDATE_EVENT,
             PermissionEnum.DEACTIVATE_EVENT,
+            PermissionEnum.MANAGE_SESSION,
             PermissionEnum.CREATE_NUTRITIONAL_INFORMATION,
             PermissionEnum.READ_ALLERGY_SPORTMAN,
             PermissionEnum.MANAGE_ALLERGY
@@ -50,6 +51,7 @@ def permission_roles_seed(db: Session) -> None:
             PermissionEnum.READ_SERVICE,
             PermissionEnum.READ_PRODUCT,
             PermissionEnum.READ_EVENT,
+            PermissionEnum.MANAGE_SESSION,
             PermissionEnum.CREATE_NUTRITIONAL_INFORMATION,
             PermissionEnum.READ_ALLERGY_SPORTMAN,
             PermissionEnum.MANAGE_ALLERGY

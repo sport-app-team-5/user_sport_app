@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-
 from app.seedwork.domain.factories import Factory
 from app.seedwork.domain.repositories import Repository
 from .city_repository import CityRepositoryPostgres
