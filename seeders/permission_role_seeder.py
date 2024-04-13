@@ -23,7 +23,10 @@ def permission_roles_seed(db: Session) -> None:
             PermissionEnum.READ_EVENT,
             PermissionEnum.UPDATE_EVENT,
             PermissionEnum.DEACTIVATE_EVENT,
-            PermissionEnum.MANAGE_SESSION
+            PermissionEnum.MANAGE_SESSION,
+            PermissionEnum.CREATE_NUTRITIONAL_INFORMATION,
+            PermissionEnum.READ_ALLERGY_SPORTMAN,
+            PermissionEnum.MANAGE_ALLERGY
         ],
         RoleEnum.TERCERO.value: [
             PermissionEnum.READ_USER,
@@ -48,7 +51,10 @@ def permission_roles_seed(db: Session) -> None:
             PermissionEnum.READ_SERVICE,
             PermissionEnum.READ_PRODUCT,
             PermissionEnum.READ_EVENT,
-            PermissionEnum.MANAGE_SESSION
+            PermissionEnum.MANAGE_SESSION,
+            PermissionEnum.CREATE_NUTRITIONAL_INFORMATION,
+            PermissionEnum.READ_ALLERGY_SPORTMAN,
+            PermissionEnum.MANAGE_ALLERGY
         ]
     }
     assign_permission_to_roles(db, roles_and_permissions)
