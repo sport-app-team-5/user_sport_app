@@ -19,7 +19,7 @@ class AuthRepositoryPostgres(AuthRepository):
             permissions = user.role.permissions
             permission_codes = [permission.permission.code for permission in permissions]
             access_token = create_access_token(data={
-                "sub": user.email,
+                "sub": str(user.id),
                 "role": user.role.code,
                 "scopes": permission_codes
             })

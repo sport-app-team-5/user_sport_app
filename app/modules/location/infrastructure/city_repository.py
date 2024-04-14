@@ -7,7 +7,6 @@ from app.modules.location.domain.repository import CityRepository
 from app.seedwork.domain.entities import City
 
 
-
 class CityRepositoryPostgres(CityRepository):
 
     @staticmethod

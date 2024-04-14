@@ -12,7 +12,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     residence_city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
-    birth_city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True)
+    birth_city_id: Mapped[int] = mapped_column(ForeignKey("cities.id"), index=True, nullable=True)
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id"), index=True)
     document_type: Mapped[str] = mapped_column(String(3))
     document_number: Mapped[str] = mapped_column(String(20), unique=True)
