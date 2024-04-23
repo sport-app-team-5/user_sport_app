@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 seeder_router = APIRouter(
     prefix='/seeders',
     tags=["Seeders"],
-    # dependencies=[Depends(oauth2_scheme)]
+    dependencies=[Depends(oauth2_scheme)]
 )
 
 
