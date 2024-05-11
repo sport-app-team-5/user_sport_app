@@ -18,3 +18,4 @@ class CountryResponseDTO(LocationResponseDTO):
 @dataclass(frozen=True)
 class CityResponseDTO(LocationResponseDTO):
     country_id: int
+    name: str
