@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 from pydantic import ConfigDict, EmailStr, BaseModel, validator
+from app.modules.location.aplication.dto import CityResponseDTO
 from app.modules.user.domain.enums.document_type_enum import DocumentTypeEnum
 
 
@@ -8,13 +9,13 @@ from app.modules.user.domain.enums.document_type_enum import DocumentTypeEnum
 class UserRequestDTO(BaseModel):
     residence_city_id: int
     role_id: int
-    birth_city_id: Optional[int] = None
     password: str
     email: EmailStr
     name: str
     lastname: str
     document_type: DocumentTypeEnum
     document_number: str
+    birth_city_id: Optional[int] = None
 
     @validator('birth_city_id', pre=True)
     def check_birth_city_id(cls, v, values):
@@ -41,10 +42,10 @@ class UserRequestDTO(BaseModel):
 @dataclass(frozen=True)
 class UserResponseDTO(BaseModel):
     id: int
-    birth_city_id: Optional[int] = None
-    residence_city_id: int
+    residence_city: CityResponseDTO
     role_id: int
     email: str
     lastname: str
     name: str
+    birth_city_id: Optional[int] = None
     model_config = ConfigDict(from_attributes=True)
