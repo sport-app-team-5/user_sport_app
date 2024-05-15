@@ -43,7 +43,8 @@ def permission_roles_seed(db: Session) -> None:
             PermissionEnum.CREATE_EVENT,
             PermissionEnum.READ_EVENT,
             PermissionEnum.UPDATE_EVENT,
-            PermissionEnum.DEACTIVATE_EVENT
+            PermissionEnum.DEACTIVATE_EVENT,
+            PermissionEnum.MANAGE_ALLERGY
         ],
         RoleEnum.DEPORTISTA.value: [
             PermissionEnum.READ_USER,
